@@ -1,0 +1,40 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+
+# Kaggle credentials and local auth
+kaggle.json
+access_token
+*.token
+
+# Competition data and large generated artifacts
+data/
+test/
+models/
+*.pth
+*.pt
+*.ckpt
+*.zip
+*.zarr/
+*.geff/
+
+# Large CSV outputs generated during experiments
+detections*.csv
+tracks*.csv
+submission*.csv
+divisions*.csv
+gt_divisions.csv
+predictions*.csv
+
+# Downloaded Kaggle outputs and raw histories
+kaggle_*/output*/
+public_notebooks/
+docs/agent_chat_history/raw/
+artifacts/
+
+# Local scratch/cache
+.ipynb_checkpoints/
+scratchpad/
+tmp/
+*.log
