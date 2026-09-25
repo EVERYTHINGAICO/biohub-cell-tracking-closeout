@@ -114,6 +114,37 @@ Preserving these failures is part of the scientific value of the archive: they p
 - **External public assets:** final candidate quality depends on public Kaggle notebooks/datasets. Attribution and license review are required before public GitHub release.
 - **Notebook-only submission rule:** direct local CSVs are invalid for this competition; all serious submissions must be notebook generated.
 
+## Why the September Public Pipelines Beat Our July Ceiling
+
+The July conclusion that the `0.896-0.897` family was nearly saturated was true for the model family available at that time, but it was not a universal ceiling for the competition.
+
+The later `0.94+` public notebooks used a different asset stack:
+
+| Asset | Published | Role | Why it mattered |
+| --- | --- | --- | --- |
+| `pilkwang/biohub-deepcenter-unet3d-center-prior-v1` | 2026-07-07 | DeepCenter full-frame center detector | Added an auxiliary center prior for conservative node rescue near gaps, short components, and unmatched endpoints. |
+| `pilkwang/biohub-temporal-unet3d-seed314159-v1` | 2026-07-20 | independent temporal UNet / node-transformer seed | Provided a second 500-epoch all-train seed, enabling dual-seed fusion rather than single-family tuning. |
+| `giorgosi/biohub-divnet-v2` | 2026-09-07 | division event classifier | Added a 3D-CNN division gate trained over 199 movies and 17k samples, with OOF ensemble AUC around `0.8874`. |
+
+These assets changed the solution class. The new notebooks were not just better settings for our July code; they combined:
+
+- DeepCenter gated node rescue;
+- dual-seed temporal graph inference;
+- bidirectional harmonic probability fusion;
+- edge-feature and detection TTA;
+- density-adaptive geometric overrides;
+- DivNet mitosis/division vetoes;
+- faster dual-T4 sharding and ILP execution.
+
+Our July experiments tested many ideas inside the older family: thresholds, short-track filters, gap recovery, relinking, appearance linkers, self-supervised features, distillation, and from-scratch training. Those were reasonable, but they did not include the later independent-seed support pack and DivNet artifact, and our own T4 training run from scratch did not reach the quality of the later public checkpoints.
+
+Scientific interpretation:
+
+- The bottleneck was not a single missed hyperparameter.
+- The performance jump came from a stronger learned base plus an ensemble/post-processing stack.
+- More GPU alone was not sufficient; the winning recipe required training, packaging, calibration, and leaderboard-informed integration.
+- Future competitions should distinguish between "ceiling of the current model family" and "competition ceiling after new public assets appear."
+
 ## Reproducibility Standard
 
 For each serious submission, preserve:
