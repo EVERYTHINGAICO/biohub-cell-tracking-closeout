@@ -1,36 +1,89 @@
-# Biohub Cell Tracking Kaggle Closeout
+# Biohub Cell Tracking During Development
 
-This repository records our work for the Kaggle competition
-`biohub-cell-tracking-during-development`.
+**Everything AI Co research archive for 3D cell tracking, bioimage analysis, and reproducible Kaggle competition workflows.**
 
-## Status
+This private repository documents our closeout work for Kaggle's `biohub-cell-tracking-during-development` competition: a notebook-only cell lineage tracking challenge using 3D microscopy time series, sparse lineage labels, graph reconstruction, and strict offline inference constraints.
 
-- Competition deadline checked through Kaggle CLI: `2026-09-29 23:59:00`.
-- Account used: `pedroapalaciosz`.
-- Best July submission in this workspace: `0.896` public score.
-- Current closeout submission:
-  - Kernel: `pedroapalaciosz/biohub-0-951-deepcenter-fast-ilp`
-  - Version: `1`
-  - Submission ref: `56537358`
-  - Status when recorded: `PENDING`
-  - Method family: public DeepCenter + temporal UNet + ILP/post-processing notebook adaptation.
+The goal of this archive is not just to store code. It is to preserve a scientifically auditable trail: what we tried, what failed, what improved public score, what came from public Kaggle work, and what should or should not be published after the competition.
 
-See [docs/COMPETITION_CLOSEOUT_PLAN.md](docs/COMPETITION_CLOSEOUT_PLAN.md) for the current operational state.
+## Snapshot
 
-## Important Notes
+| Field | Value |
+| --- | --- |
+| Organization | Everything AI Co |
+| Domain | Bioimage analysis, 3D cell tracking, scientific ML, Kaggle reproducibility |
+| Competition | `biohub-cell-tracking-during-development` |
+| Deadline checked | `2026-09-29 23:59:00` |
+| Best completed July submission | `0.896` public score |
+| Current closeout submission | ref `56537358`, status `PENDING` |
+| Final candidate kernel | `pedroapalaciosz/biohub-0-951-deepcenter-fast-ilp`, version `1` |
+| Final candidate method family | DeepCenter detection + temporal UNet/linking + ILP + graph post-processing |
+| Repo visibility | Private until competition closeout/publication review |
 
-- This is a Kaggle code competition. Valid submissions must be made from a Kaggle notebook version, not by directly uploading a local CSV.
-- Final notebooks should run with internet disabled and T4 GPU selected when required.
-- Do not commit Kaggle credentials, raw competition data, downloaded private outputs, model weights, or large generated CSV files.
-- Raw agent chat histories are private project artifacts and are excluded from the public repo.
+## Why This Matters
 
-## Key Project History
+Cell tracking during development is a graph problem hidden inside image data. A useful solution must:
 
-Early local/rule-based work progressed from DoG tracking baselines around `0.826` to public learned-graph/post-processing adaptations around `0.896`. Near closeout, stronger public notebooks appeared, including public DeepCenter/ILP variants in the `0.947` to `0.951` range. We adapted the strongest visible public candidate into our Kaggle account and submitted it as ref `56537358`.
+- detect cell centers in anisotropic 3D volumes;
+- associate detections across time into directed lineage graphs;
+- support cell division events;
+- avoid invalid graph topology such as multiple parents;
+- run inside Kaggle's notebook execution constraints;
+- produce an auditable `submission.csv` generated inside Kaggle.
 
-## Reproduction Pointers
+This repo captures the engineering and scientific workflow behind that process: metric reconstruction, sparse-label validation, model adaptation, post-processing experiments, and final competition submission hygiene.
 
-Check competition submissions:
+## Method Summary
+
+The final candidate submission uses a public high-scoring Kaggle notebook family rather than a direct local CSV upload. The adapted kernel is configured as a no-internet Kaggle notebook with T4 GPU execution.
+
+At a high level:
+
+1. **Detection:** DeepCenter-style 3D center-prior detector candidates identify likely cell centers.
+2. **Temporal modeling:** a temporal UNet / learned graph association model scores candidate links across adjacent frames.
+3. **Optimization:** ILP-style graph selection enforces a coherent cell lineage topology.
+4. **Post-processing:** gap handling, division safeguards, short-track filtering, motion relinking, and graph integrity checks improve score while preserving valid structure.
+5. **Submission formatting:** the notebook writes Kaggle's required node/edge table with columns:
+   `id`, `dataset`, `row_type`, `node_id`, `t`, `z`, `y`, `x`, `source_id`, `target_id`.
+
+See [docs/METHODS.md](docs/METHODS.md) for the scientific method record.
+
+## Scientific Rigor
+
+This archive is intentionally conservative about claims.
+
+- Scores are reported as Kaggle public scores only when the Kaggle CLI reported them.
+- Public notebook title scores are treated as external claims until our own submission is scored.
+- The local metric work is documented as a proxy, not as a substitute for hidden-test scoring.
+- Sparse ground truth behavior is called out explicitly: many unannotated cells are ignored by the metric rather than counted as false positives.
+- Failed paths are preserved because they explain why the final solution focused on public model adaptation and graph post-processing.
+
+Key negative results:
+
+- naive 3D UNet detection underperformed the established detection stack;
+- appearance-only linkers did not learn enough association signal from sparse labels;
+- self-supervised appearance features did not provide robust edge recovery;
+- public-post-processing tuning reached a plateau until stronger public DeepCenter-style notebooks appeared.
+
+## Competition Timeline
+
+| Stage | Result |
+| --- | --- |
+| Early DoG baseline | `0.826` public score |
+| Rule-based V3/two-pass linker | `0.842` |
+| Public learned-graph adaptation | `0.856` |
+| Threshold/short-track tuning | `0.867` to `0.873` |
+| Boristown-style post-processing | `0.889` |
+| Yusuke LB897 family | `0.896` |
+| September DeepCenter/ILP public adaptation | submitted as ref `56537358`, pending at last check |
+
+Operational details live in [docs/COMPETITION_CLOSEOUT_PLAN.md](docs/COMPETITION_CLOSEOUT_PLAN.md).
+
+## Reproducibility
+
+This repository does not include Kaggle data, model weights, output CSVs, private artifacts, or raw chat logs. Reproduction must use Kaggle-attached competition data and public Kaggle datasets/notebooks referenced in the docs.
+
+Check submissions:
 
 ```bash
 kaggle competitions submissions -c biohub-cell-tracking-during-development | head -8
@@ -53,13 +106,34 @@ kaggle competitions submit \
   -m "Public DeepCenter fast ILP 0.951 adaptation"
 ```
 
-## Repository Hygiene
+## Repository Map
 
-Before publishing to GitHub:
-
-```bash
-rg -n -i "KAGGLE_KEY|kaggle.json|api_key|token|password|credential|secret" .
-find . -type f -size +50M -print
+```text
+docs/
+  METHODS.md                    scientific method record and validation notes
+  ATTRIBUTION.md                source notebook/dataset attribution
+  COMPETITION_CLOSEOUT_PLAN.md  operational closeout state
+  GITHUB_PUBLISHING_AUDIT.md    what can and cannot be published
+src/
+  detection, tracking, formatting, metric, and experiment scripts
+scripts/
+  small utility scripts
+kaggle_final/
+  metadata for the final adapted Kaggle kernel
 ```
 
-Review any findings manually. Most large generated artifacts are intentionally ignored by `.gitignore`.
+## SEO Keywords
+
+Biohub cell tracking, Kaggle bioimage analysis, 3D cell tracking, cell lineage reconstruction, microscopy time series, DeepCenter, temporal UNet, ILP tracking, graph tracking, scientific machine learning, reproducible ML, AI governance for research workflows, Everything AI Co.
+
+## Publication Policy
+
+This repository is private during active competition closeout. Before public release:
+
+- do not include Kaggle credentials;
+- do not redistribute competition data;
+- do not include generated submissions, outputs, model weights, or private datasets;
+- attribute all public Kaggle notebooks and datasets;
+- make clear which results are our submissions and which are public-notebook claims.
+
+See [docs/GITHUB_PUBLISHING_AUDIT.md](docs/GITHUB_PUBLISHING_AUDIT.md).

@@ -1,0 +1,15 @@
+All rights reserved until public release review.
+
+This private repository is an internal Everything AI Co competition closeout archive.
+It contains original scripts and documentation, plus provenance notes about public
+Kaggle notebooks and datasets that are not redistributed here.
+
+Before any public release, review:
+
+- Kaggle competition rules;
+- source notebook and dataset licenses;
+- third-party attribution requirements;
+- whether an open-source license should apply to original code only.
+
+No permission is granted to redistribute competition data, private outputs,
+credentials, model weights, or copied third-party notebooks from this archive.
