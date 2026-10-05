@@ -17,4 +17,9 @@ Important runtime settings:
 - `enable_internet: false`
 - competition source: `biohub-cell-tracking-during-development`
 
-Public score was still pending at last documentation.
+Final official result:
+
+- status: `SubmissionStatus.COMPLETE`
+- public score: `0.94431`
+- private score: `0.91439`
+- public leaderboard rank from downloaded leaderboard: `1645 / 3950`

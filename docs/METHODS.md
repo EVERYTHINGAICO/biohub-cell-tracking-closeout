@@ -92,7 +92,10 @@ Submission ref: 56537358
 Rows: 245195
 Nodes: 124772
 Edges: 120423
-Status at last documentation: PENDING
+Status: COMPLETE
+Public score: 0.94431
+Private score: 0.91439
+Public leaderboard rank: 1645 / 3950
 ```
 
 ## Negative Results

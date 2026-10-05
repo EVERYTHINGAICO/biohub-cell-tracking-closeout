@@ -13,12 +13,14 @@ The goal of this archive is not just to store code. It is to preserve a scientif
 | Organization | Everything AI Co |
 | Domain | Bioimage analysis, 3D cell tracking, scientific ML, Kaggle reproducibility |
 | Competition | `biohub-cell-tracking-during-development` |
-| Deadline checked | `2026-09-29 23:59:00` |
+| Deadline | `2026-09-29 23:59:00` |
 | Best completed July submission | `0.896` public score |
-| Current closeout submission | ref `56537358`, status `PENDING` |
-| Final candidate kernel | `pedroapalaciosz/biohub-0-951-deepcenter-fast-ilp`, version `1` |
-| Final candidate method family | DeepCenter detection + temporal UNet/linking + ILP + graph post-processing |
-| Repo visibility | Private until competition closeout/publication review |
+| Final official submission | ref `56537358`, `COMPLETE` |
+| Final official kernel | `pedroapalaciosz/biohub-0-951-deepcenter-fast-ilp`, version `1` |
+| Final official method family | DeepCenter detection + temporal UNet/linking + ILP + graph post-processing |
+| Final official scores | public `0.94431`, private `0.91439` |
+| Public leaderboard row | rank `1645 / 3950` teams, team `PEDRO A. PALACIOS Z.` |
+| Repo visibility | Private until final source-license/publication review |
 
 ## Why This Matters
 
@@ -75,7 +77,7 @@ Key negative results:
 | Threshold/short-track tuning | `0.867` to `0.873` |
 | Boristown-style post-processing | `0.889` |
 | Yusuke LB897 family | `0.896` |
-| September DeepCenter/ILP public adaptation | submitted as ref `56537358`, pending at last check |
+| September DeepCenter/ILP public adaptation | ref `56537358`, public `0.94431`, private `0.91439` |
 
 Operational details live in [docs/COMPETITION_CLOSEOUT_PLAN.md](docs/COMPETITION_CLOSEOUT_PLAN.md).
 

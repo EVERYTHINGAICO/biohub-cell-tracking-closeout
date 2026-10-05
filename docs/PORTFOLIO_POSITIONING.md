@@ -38,7 +38,7 @@ everything-ai-co
 
 Before making this repo public:
 
-- update the final public score for submission `56537358`;
+- final score updated for submission `56537358`: public `0.94431`, private `0.91439`;
 - keep the final notebook itself on Kaggle unless redistribution is clearly allowed;
 - verify source licenses for any public notebook code;
 - remove or sanitize any account-specific operational details;

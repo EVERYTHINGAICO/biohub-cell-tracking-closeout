@@ -1,6 +1,6 @@
 # Biohub Kaggle Closeout Plan
 
-Date checked: 2026-09-25
+Date checked: 2026-10-05
 Competition: `biohub-cell-tracking-during-development`
 
 ## Current Competition State
@@ -8,15 +8,19 @@ Competition: `biohub-cell-tracking-during-development`
 - Kaggle CLI access works for account `pedroapalaciosz`.
 - Account has entered the competition.
 - Deadline reported by Kaggle CLI: `2026-09-29 23:59:00`.
-- Current best local account public score: `0.896`, from July submissions based on the public LB897 family.
-- The competition is still open as of 2026-09-25.
+- Competition is closed.
+- Final official submission ref: `56537358`.
+- Final official public score: `0.94431`.
+- Final official private score: `0.91439`.
+- Downloaded public leaderboard rank: `1645 / 3950`.
 
 ## Our Submission History
 
 Best completed submissions currently visible through Kaggle CLI:
 
-| Ref | Date | Description | Public score |
-| --- | --- | --- | --- |
+| Ref | Date | Description | Public score | Private score |
+| --- | --- | --- | --- | --- |
+| `56537358` | 2026-09-25 | Public DeepCenter fast ILP 0.951 adaptation | `0.94431` | `0.91439` |
 | `54447806` | 2026-07-08 | swap-ontop: yusuke 0.897 pipeline + 6 target swaps | `0.896` |
 | `54443420` | 2026-07-07 | min7 = yusuke LB897 reference | `0.896` |
 | `54443419` | 2026-07-07 | min6 short-track A/B | `0.896` |
@@ -49,7 +53,8 @@ Public notebook listing now shows stronger runnable notebooks than the July LB89
 - Submission CSV shape: `245195` rows x `10` columns
 - Submission row types: `124772` nodes, `120423` edges
 - Competition submission ref: `56537358`
-- Submission status at creation: `PENDING`
+- Final submission status: `COMPLETE`
+- Final public/private scores: `0.94431` / `0.91439`
 - Submission time: `2026-09-25 02:05:09.477000`
 
 Submitted command used:
@@ -63,32 +68,20 @@ kaggle competitions submit \
   -m "Public DeepCenter fast ILP 0.951 adaptation"
 ```
 
-Check score:
+Check final score:
 
 ```bash
 kaggle competitions submissions -c biohub-cell-tracking-during-development | head -8
 ```
 
-If it errors:
-
-1. Download logs:
-
-```bash
-kaggle kernels output pedroapalaciosz/biohub-0-951-deepcenter-fast-ilp -p kaggle_haideptry951/output_v1
-```
-
-2. Try fallback public notebooks in this order:
-
-- `zhincez/biohub-0-947-lb-runnable-with-public-datasets`
-- `beraterolelk/0-947-lb-biohub-deepcenter-ilp-tracker`
+Late exploratory kernels from `2026-09-27` completed and produced structurally valid `submission.csv` files, but they were not submitted before the competition deadline and therefore are not official results.
 
 ## Final Competition Checklist
 
-- Ensure at least one high-scoring notebook submission is completed after the September public-notebook update.
-- Submit from the notebook version, not a direct local CSV.
-- Select final submissions on Kaggle before deadline if Kaggle does not auto-select the desired best two.
-- Save logs, output CSV, metadata, and exact notebook version references.
-- Do not commit Kaggle credentials, raw competition data, private dataset contents, or large generated CSV/model outputs to GitHub.
+- Official high-scoring notebook submission completed: `56537358`.
+- Submission came from a Kaggle notebook version, not a direct local CSV.
+- Logs, output summary, metadata, and kernel references were preserved locally.
+- Kaggle credentials, raw competition data, private dataset contents, and large generated CSV/model outputs remain out of GitHub.
 
 ## GitHub Repo Cleanup Plan
 
