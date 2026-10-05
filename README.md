@@ -2,9 +2,15 @@
 
 **Everything AI Co research archive for 3D cell tracking, bioimage analysis, and reproducible Kaggle competition workflows.**
 
-This private repository documents our closeout work for Kaggle's `biohub-cell-tracking-during-development` competition: a notebook-only cell lineage tracking challenge using 3D microscopy time series, sparse lineage labels, graph reconstruction, and strict offline inference constraints.
+This repository documents our closeout work for Kaggle's `biohub-cell-tracking-during-development` competition: a notebook-only cell lineage tracking challenge using 3D microscopy time series, sparse lineage labels, graph reconstruction, and strict offline inference constraints.
 
 The goal of this archive is not just to store code. It is to preserve a scientifically auditable trail: what we tried, what failed, what improved public score, what came from public Kaggle work, and what should or should not be published after the competition.
+
+## Related Repositories
+
+- **Publication-safe research summary:** https://github.com/EVERYTHINGAICO/biohub-cell-tracking-research-log
+- **Kaggle notebook:** https://www.kaggle.com/code/pedroapalaciosz/biohub-0-951-deepcenter-fast-ilp
+- **Competition page:** https://www.kaggle.com/competitions/biohub-cell-tracking-during-development
 
 ## Snapshot
 
@@ -20,7 +26,7 @@ The goal of this archive is not just to store code. It is to preserve a scientif
 | Final official method family | DeepCenter detection + temporal UNet/linking + ILP + graph post-processing |
 | Final official scores | public `0.94431`, private `0.91439` |
 | Public leaderboard row | rank `1645 / 3950` teams, team `PEDRO A. PALACIOS Z.` |
-| Repo visibility | Private until final source-license/publication review |
+| Repo visibility | Public technical archive after source-license/publication review |
 
 ## Why This Matters
 
