@@ -1,10 +1,16 @@
 # Biohub Cell Tracking During Development
 
-**Everything AI Co research archive for 3D cell tracking, bioimage analysis, and reproducible Kaggle competition workflows.**
+**Everything AI Co research archive for 3D cell tracking, bioimage analysis, and documented Kaggle competition workflows.**
 
 This repository documents our closeout work for Kaggle's `biohub-cell-tracking-during-development` competition: a notebook-only cell lineage tracking challenge using 3D microscopy time series, sparse lineage labels, graph reconstruction, and strict offline inference constraints.
 
 The goal of this archive is not just to store code. It is to preserve a scientifically auditable trail: what we tried, what failed, what improved public score, what came from public Kaggle work, and what should or should not be published after the competition.
+
+## Scope and Contribution
+
+This technical archive and the [research log](https://github.com/EVERYTHINGAICO/biohub-cell-tracking-research-log) document the same Biohub project. This repository contains local experiment scripts and technical records; the research log provides a shorter narrative and failure analysis.
+
+Our local work includes detection/linking experiments, metric reconstruction, model-training experiments, post-processing evaluation, and adaptation and documentation of community pipelines. The final submission depends on public Kaggle notebooks, models, and datasets credited in [docs/ATTRIBUTION.md](docs/ATTRIBUTION.md). It is not a claim that we invented those models or independently established a state-of-the-art method.
 
 ## Related Repositories
 
@@ -26,7 +32,7 @@ The goal of this archive is not just to store code. It is to preserve a scientif
 | Final official method family | DeepCenter detection + temporal UNet/linking + ILP + graph post-processing |
 | Final official scores | public `0.94431`, private `0.91439` |
 | Public leaderboard row | rank `1645 / 3950` teams, team `PEDRO A. PALACIOS Z.` |
-| Repo visibility | Public technical archive after source-license/publication review |
+| Repo visibility | Public technical archive |
 
 ## Why This Matters
 
@@ -91,6 +97,8 @@ Operational details live in [docs/COMPETITION_CLOSEOUT_PLAN.md](docs/COMPETITION
 
 This repository does not include Kaggle data, model weights, output CSVs, private artifacts, or raw chat logs. Reproduction must use Kaggle-attached competition data and public Kaggle datasets/notebooks referenced in the docs.
 
+Reproducibility is partial: the archive preserves local scripts, source references, kernel metadata, and reported results, but does not provide a self-contained, dependency-pinned environment or an automated end-to-end reproduction of the final submission. The final notebook is linked on Kaggle rather than included here. The local metric is a proxy, not an independently verified replacement for competition scoring.
+
 Check submissions:
 
 ```bash
@@ -103,7 +111,7 @@ Check the final kernel:
 kaggle kernels status pedroapalaciosz/biohub-0-951-deepcenter-fast-ilp
 ```
 
-Submit the final notebook version if needed:
+Historical submission command, preserved as a record of the competition workflow:
 
 ```bash
 kaggle competitions submit \
@@ -136,7 +144,7 @@ Biohub cell tracking, Kaggle bioimage analysis, 3D cell tracking, cell lineage r
 
 ## Publication Policy
 
-This repository is private during active competition closeout. Before public release:
+This repository is now a public technical archive. The competition-period publication audit is preserved as a historical record; it does not describe the repository's current visibility. Published content continues to follow these boundaries:
 
 - do not include Kaggle credentials;
 - do not redistribute competition data;

@@ -1,10 +1,10 @@
 # Portfolio Positioning
 
-This repository should present Everything AI Co as a group that can run rigorous AI research workflows, not merely chase leaderboard score.
+This repository presents Everything AI Co's applied bioimage-analysis experiments, adaptations of community models, and documented validation limits.
 
 ## Core Message
 
-Everything AI Co builds reproducible, auditable AI systems for high-stakes technical domains. This Biohub archive demonstrates that capability in bioimage analysis:
+This Biohub archive provides evidence of research software and documented experimentation in bioimage analysis:
 
 - competition operations under strict notebook-only constraints;
 - scientific method documentation;
@@ -13,10 +13,12 @@ Everything AI Co builds reproducible, auditable AI systems for high-stakes techn
 - safe handling of credentials, data, and publication boundaries;
 - adaptation of public ML systems with clear provenance.
 
+The closeout repository and the research log are two views of the same project. Local scripts and research records support claims about experimentation, adaptation, and validation work. They do not establish independent invention of the community models, a novel state-of-the-art result, or a self-contained end-to-end reproduction.
+
 ## Suggested GitHub Description
 
 ```text
-Private Kaggle Biohub cell tracking closeout archive: 3D microscopy lineage tracking, DeepCenter/temporal-UNet/ILP notes, metric reconstruction, and reproducible scientific ML workflow by Everything AI Co.
+Applied Biohub cell-tracking research archive: local experiments, metric reconstruction, community-model adaptation, and documented validation limits by Everything AI Co.
 ```
 
 ## Suggested Topics
@@ -34,9 +36,9 @@ graph-tracking
 everything-ai-co
 ```
 
-## Public Release Checklist
+## Historical Public Release Checklist
 
-Before making this repo public:
+The repository is now public. The following checklist records the publication-review plan; listing an item does not establish that a review or reproduction was completed:
 
 - final score updated for submission `56537358`: public `0.94431`, private `0.91439`;
 - keep the final notebook itself on Kaggle unless redistribution is clearly allowed;
